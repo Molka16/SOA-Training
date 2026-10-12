@@ -57,6 +57,23 @@ public class ModuleRestAPI {
 
         return Response.status(200).entity(helper.getModulesByType(type)).build();
     }
+    @Path("/update/{matricule}")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateModule(
+            @PathParam("matricule") String matricule,
+            Module module) {
 
+        if (helper.updateModule(matricule, module)) {
+            return Response.status(200)
+                    .entity("Module modifié avec succès")
+                    .build();
+        } else {
+            return Response.status(404)
+                    .entity("Module non trouvé")
+                    .build();
+        }
+    }
 
 }
