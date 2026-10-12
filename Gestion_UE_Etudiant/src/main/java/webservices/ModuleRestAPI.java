@@ -75,5 +75,20 @@ public class ModuleRestAPI {
                     .build();
         }
     }
+    @Path("/delete/{matricule}")
+    @DELETE
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteModule(
+            @PathParam("matricule") String matricule) {
 
+        if (helper.deleteModule(matricule)) {
+            return Response.status(200)
+                    .entity("Module supprimé avec succès")
+                    .build();
+        } else {
+            return Response.status(404)
+                    .entity("Module non trouvé")
+                    .build();
+        }
+    }
 }
