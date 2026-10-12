@@ -49,6 +49,14 @@ public class ModuleRestAPI {
                     .build();
         }
     }
+    @Path("/type/{type}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getModulesByType(
+            @PathParam("type") Module.TypeModule type) {
+
+        return Response.status(200).entity(helper.getModulesByType(type)).build();
+    }
 
 
 }
