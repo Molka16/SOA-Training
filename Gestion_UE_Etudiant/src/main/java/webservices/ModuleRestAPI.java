@@ -57,6 +57,7 @@ public class ModuleRestAPI {
 
         return Response.status(200).entity(helper.getModulesByType(type)).build();
     }
+
     @Path("/update/{matricule}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
@@ -75,6 +76,8 @@ public class ModuleRestAPI {
                     .build();
         }
     }
+
+
     @Path("/delete/{matricule}")
     @DELETE
     @Produces(MediaType.TEXT_PLAIN)
@@ -91,4 +94,6 @@ public class ModuleRestAPI {
                     .build();
         }
     }
+
+
 }
